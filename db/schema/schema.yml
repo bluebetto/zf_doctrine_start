@@ -1,0 +1,592 @@
+Acesso:
+  connection: doctrine
+  tableName: acesso
+  columns:
+    id_acesso:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    usuario:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    senha:
+      type: string(40)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cadastrado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Corretor:
+      local: id_acesso
+      foreign: id_acesso
+      type: many
+Corretor:
+  connection: doctrine
+  tableName: corretor
+  columns:
+    id_corretor:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    id_acesso:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_situacao:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    nome:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    cpf:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: false
+      autoincrement: false
+    rg:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    crm:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    data_nascimento:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    endereco:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    complemento:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    bairro:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cidade:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    uf:
+      type: string(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    escolaridade:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    email:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    telefone:
+      type: string(11)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cadastrado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    removido:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Acesso:
+      local: id_acesso
+      foreign: id_acesso
+      type: one
+    CorretorSituacao:
+      local: id_situacao
+      foreign: id_situacao
+      type: one
+    Imovel:
+      local: id_corretor
+      foreign: id_corretor
+      type: many
+    Relatorios:
+      local: id_corretor
+      foreign: id_corretor
+      type: many
+CorretorSituacao:
+  connection: doctrine
+  tableName: corretor_situacao
+  columns:
+    id_situacao:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    situacao:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Corretor:
+      local: id_situacao
+      foreign: id_situacao
+      type: many
+Imovel:
+  connection: doctrine
+  tableName: imovel
+  columns:
+    id_imovel:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    id_corretor:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_tipo:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    codigo:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    endereco:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    complemento:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    bairro:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    cidade:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    uf:
+      type: string(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    valor_venda:
+      type: 'decimal(12, 2)'
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    valor_aluguel:
+      type: 'decimal(12, 2)'
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    area_terreno:
+      type: 'decimal(7, 1)'
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    area_construida:
+      type: 'decimal(7, 1)'
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    descricao:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    visualizado:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    cadastrado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    removido:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    aluguel:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+    venda:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    temporada:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    reservado:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    ImovelTipo:
+      local: id_tipo
+      foreign: id_tipo
+      type: one
+    Corretor:
+      local: id_corretor
+      foreign: id_corretor
+      type: one
+    ImovelImagem:
+      local: id_imovel
+      foreign: id_imovel
+      type: many
+    ImovelVideo:
+      local: id_imovel
+      foreign: id_imovel
+      type: many
+    ItemImovel:
+      local: id_imovel
+      foreign: id_imovel
+      type: many
+    Relatorios:
+      local: id_imovel
+      foreign: id_imovel
+      type: many
+ImovelImagem:
+  connection: doctrine
+  tableName: imovel_imagem
+  columns:
+    id_imagem:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    id_imovel:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    arquivo:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    descricao:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Imovel:
+      local: id_imovel
+      foreign: id_imovel
+      type: one
+ImovelTipo:
+  connection: doctrine
+  tableName: imovel_tipo
+  columns:
+    id_tipo:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    nome:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Imovel:
+      local: id_tipo
+      foreign: id_tipo
+      type: many
+ImovelVideo:
+  connection: doctrine
+  tableName: imovel_video
+  columns:
+    id_video:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    id_imovel:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    caminho:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    titulo:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Imovel:
+      local: id_imovel
+      foreign: id_imovel
+      type: one
+Item:
+  connection: doctrine
+  tableName: item
+  columns:
+    id_item:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    descricao:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    valor_padrao:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    ItemImovel:
+      local: id_item
+      foreign: id_item
+      type: many
+ItemImovel:
+  connection: doctrine
+  tableName: item_imovel
+  columns:
+    id_item:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    id_imovel:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    valor:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Item:
+      local: id_item
+      foreign: id_item
+      type: one
+    Imovel:
+      local: id_imovel
+      foreign: id_imovel
+      type: one
+Relatorios:
+  connection: doctrine
+  tableName: relatorios
+  columns:
+    id_relatorio:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    id_corretor:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_imovel:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    data_processo:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    descricao:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    reserva:
+      type: date(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Corretor:
+      local: id_corretor
+      foreign: id_corretor
+      type: one
+    Imovel:
+      local: id_imovel
+      foreign: id_imovel
+      type: one

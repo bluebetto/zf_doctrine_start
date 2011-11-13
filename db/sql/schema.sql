@@ -1,0 +1,6 @@
+CREATE TABLE acesso (id_acesso INT AUTO_INCREMENT, usuario VARCHAR(45), senha VARCHAR(45), PRIMARY KEY(id_acesso)) ENGINE = INNODB;
+CREATE TABLE detalhe (id_detalhe INT, detalhe VARCHAR(255), padrao VARCHAR(255), PRIMARY KEY(id_detalhe)) ENGINE = INNODB;
+CREATE TABLE imovel (id_imovel INT AUTO_INCREMENT, tipo INT NOT NULL, codigo VARCHAR(45), endereco VARCHAR(255) NOT NULL, numero VARCHAR(25) NOT NULL, complemento VARCHAR(255) NOT NULL, bairro VARCHAR(255) NOT NULL, cidade VARCHAR(255) NOT NULL, uf VARCHAR(2) NOT NULL, latitude DECIMAL(12, 9), longitude DECIMAL(12, 9), adicionado DATETIME NOT NULL, atualizado DATETIME, removido DATETIME, valor_aluguel_diaria DECIMAL(12, 2), valor_aluguel_mensal DECIMAL(12, 2), valor_venda DECIMAL(12, 2), PRIMARY KEY(id_imovel)) ENGINE = INNODB;
+CREATE TABLE imovel_detalhe (id_detalhe INT AUTO_INCREMENT, id_imovel INT NOT NULL, detalhe VARCHAR(255) NOT NULL, valor VARCHAR(255) NOT NULL, PRIMARY KEY(id_detalhe)) ENGINE = INNODB;
+CREATE TABLE imovel_imagem (id_imagem INT AUTO_INCREMENT, id_imovel INT NOT NULL, arquivo VARCHAR(255) NOT NULL, descricao VARCHAR(255), adicionado DATETIME NOT NULL, PRIMARY KEY(id_imagem)) ENGINE = INNODB;
+CREATE TABLE imovel_tipo (id_tipo INT AUTO_INCREMENT, tipo VARCHAR(255) NOT NULL, PRIMARY KEY(id_tipo)) ENGINE = INNODB;
